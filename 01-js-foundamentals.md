@@ -39,8 +39,54 @@ console.log(firstName);
 ```
 
 ## Data Types
+In Javascript, every value is either an Object or a Primitive. 
 
+### The 7 Primitive data types
+1. Number. All numbers in JS are floating pointer numbers, they are used for decimals and integers. In `let age = 23; `, the `23` is actually `23.0`. 
+2. String. Such as `let firstName = 'Lisa';`. 
+3. Boolean. Can only be true or false. `let myFlag = true`. 
+4. Undefined. Value taken by a variable that is not yet defined / empty value. `let children; `. 
+5. Null. Also means empty value. 
+6. Symbol (defined in ES2015). Value that is unique and cannot be changed. (not useful for now)
+7. BigInt (defined in ES2020). Larger integers than the Number type can hold. 
 
+Note: JavaScript has `dynamic typing`: We do not have to manually define the data type of the value stored in a variable. Instead, data types are determined automatically. Therefore, in JS, it is the value that has type, not the variable - Variable simply stores the values that has a type. It also means that later in the code, we can assign a new value with a different data type to the same variable, without a problem. E.g.: variable x can initially be a number and then later, a string. This feature can be useful, but can also be a source of some difficult to find bugs. 
+
+JS comment: 
+```js
+// This is a inline comment
+
+/* This
+   is 
+   a
+   multi-line comment
+*/
+```
+JS Datatype examples: 
+```js
+let myFlag = true;
+console.log(myFlag);
+
+console.log(typeof true); // boolean
+console.log(typeof myFlag); // boolean
+console.log(typeof 23); // number
+console.log(typeof 'Jonas'); // string
+
+/* dynamic typing example */
+myFlag = 'YES!';
+console.log(typeof myFlag); // string
+
+/* undefined variable */
+let year;
+console.log(year); // undefined
+console.log(typeof year); // undefined
+
+/* dynamic typing example */
+year = 1991;
+console.log(typeof year); // number
+
+console.log(typeof null); // should return null, but return object due to a legacy bug. 
+```
 
 
 
