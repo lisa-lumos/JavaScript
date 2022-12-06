@@ -88,10 +88,27 @@ console.log(typeof year); // number
 console.log(typeof null); // should return null, but return object due to a legacy bug. 
 ```
 
+## let, const and var
+`let` and `const` were introduced in ES6. 
 
+Use the `let` keyword to define vars that can change later (reassign/mutate), during the execution of the program. Or to define an empty variable. 
+```js
+let age = 8;
+age = 9;
+let name;
+```
 
+Use the `const` keyword to define vars that are not supposed to change anytime in the future. Which also means we CANNOT declare empty const vars. 
+```
+const birthYear = 2000; 
+```
 
+Recommend to `use const by default, and only use let when you are really sure that this var is going to change`. Because it is a good practice to have as little var mutations/changes as possible, as it introduces a potential to create bugs. 
 
+The `var` keyword is the old way to define variables, and should be completely avoided. It works very similar to let. More on this later. 
+```js
+var job = 'programmer';
+job = 'student'
+```
 
-
-
+In js, it is not mandatory to declare a var before using it. It is not recommended to use it this way. 
