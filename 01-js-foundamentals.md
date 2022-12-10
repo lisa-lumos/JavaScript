@@ -112,3 +112,56 @@ job = 'student'
 ```
 
 In js, it is not mandatory to declare a var before using it. It is not recommended to use it this way. 
+
+## basic Operators
+```js
+const curYear = 2023;
+const ageJohn = curYear - 2001;
+const ageSara = curYear - 2013;
+// can log different values in one console.log()
+console.log(ageJohn, ageSara, 2 ** 3) // 22 10 8
+
+// use + to concatenate strs
+const firstName = 'Lisa';
+const lastName = 'Lumos';
+console.log(firstName + " " + lastName)
+
+// +=, ++, ...
+let x = 1 + 2; // 3
+x += 5; // 8
+x *= 2; // 16
+x++; // 17
+console.log(x); //  17
+
+console.log(ageJohn < ageSara) // false
+const isFullAge = ageSara >= 18;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
