@@ -132,14 +132,32 @@ x += 5; // 8
 x *= 2; // 16
 x++; // 17
 console.log(x); //  17
-
 console.log(ageJohn < ageSara) // false
 const isFullAge = ageSara >= 18;
 ```
 
+## Strings and Template Literals
+Concatenating vars and string literals can be a pain to manage the spaces in between. Starting with ES6, we can use `template literals` to do this:
+```js
+const firstName1 = 'Joe';
+const weight1 = 150;
+const firstName2 = 'Ann';
+const weight2 = 100;
 
+// Use template literal
+const sentence = `${firstName1} and ${firstName2} has a weight difference of ${weight1-weight2}lbs. `;
+console.log(sentence);
 
+// Use backtick for any string
+console.log(`Just a regular string...`);
 
+// Create a multi-line string
+console.log(`This
+string
+has multiple lines`);
+```
+
+You can also use backticks for all strings, then you don't need to think about which quotation mark to use. 
 
 
 
