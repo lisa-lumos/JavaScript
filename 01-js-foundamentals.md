@@ -159,16 +159,47 @@ has multiple lines`);
 
 You can also use backticks for all strings, then you don't need to think about which quotation mark to use. 
 
+## if / else statements
+The if/else control structure: 
+```js
+const age = 14;
+const ageForDriving = 16
+const isOldEnough = age >= ageForDriving;
 
+console.log(isOldEnough);
 
+let yearsLeft;
 
+if (isOldEnough) {
+  console.log("Sarah can start driving. ");
+} else {
+  yearsLeft = ageForDriving - age;
+  console.log(`Sarah cannot start driving yet, wait another ${yearsLeft} years. `);
+}
+```
 
+## Type Conversion and Coercion
+Type conversion is manual, while type coercion is automatic. 
 
+Type conversion only can be to three types: number, string, or boolean. 
+```js
+const inputYear = '2005';
+console.log(Number(inputYear) + 10); // type conversion to number
+console.log(String(23)); // type conversion to string
 
+console.log(Number('lisa')); // return NaN (invalid number)
+console.log(typeof NaN); // return number
+```
 
-
-
-
+Type coercion:
+```js
+console.log('Ben has ' + 10 + ' oranges. '); // type coercion to string
+console.log('25' - '10' - 5); // return number 10. type coercion to number
+console.log('25' + '10' + 5); // return string 25105. type coercion to string
+console.log(5 + '5'); // return string 55. if have string, prioritize to use string
+console.log('25' * '10'); // return number 250. type coercion to number
+console.log('25' / '10'); // return number 2.5. type coercion to number
+```
 
 
 
