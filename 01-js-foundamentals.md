@@ -178,7 +178,7 @@ if (isOldEnough) {
 }
 ```
 
-## Type Conversion and Coercion
+## Type Conversion and Type Coercion
 Type conversion is manual, while type coercion is automatic. 
 
 Type conversion only can be to three types: number, string, or boolean. 
@@ -201,9 +201,30 @@ console.log('25' * '10'); // return number 250. type coercion to number
 console.log('25' / '10'); // return number 2.5. type coercion to number
 ```
 
+Use of type coercion: 
+```js
+// 5 falsy values (vals that becomes false when converted to boolean):
+// 0, '', undefined, null, NaN
+// but manual conversion is rarely used
+console.log(Boolean(0));
+console.log(Boolean('lisa'));
+console.log(Boolean({})); // empty object is converted to true
 
+// example of coercion
+const money = 100; // 100 0
+if (money) {
+  console.log("Still have money. ");
+} else {
+  console.log("Have no money. ");
+}
 
-
+let height = 0; // = 0
+if (height || height == 0) {
+  console.log("Height is defined. ");
+} else {
+  console.log("Height is not defined. ")
+}
+```
 
 
 
