@@ -226,6 +226,55 @@ if (height || height == 0) {
 }
 ```
 
+## Equality Operators == vs ===
+- `===` is the strict equality operator, because it does not perform type coercion. 
+- `==` is the loose equality operator, which does type coercion. 
+
+```js
+// strict equal
+const age = 100;
+if (age === 100) console.log('You are 100 yrs old. ')
+console.log(100 === 100) // true
+console.log(100 === 101) // false
+console.log('100' === 100) // false
+
+// loose equal
+console.log('100' == 100) // true
+```
+
+Advice: avoid the loose equality operator as much as you can. Always use `===` only. Even if type conversion is needed, it is best to convert manually instead of relying on the loose operator. Same goes with not-equal operator. 
+
+More examples:
+```js
+const answer = Number(prompt("What is your favorite number? ")); // create a prompt for user input, prompt returns a string
+console.log(answer); 
+console.log(typeof answer); // number
+
+if (answer === 20) {
+  console.log('20 is a great number! ')
+} else if (answer === 7) {
+  console.log('7 is a great number! ')
+} else {
+  console.log('Number is not 20 or 7')
+}
+
+if (answer !== 23) console.log('Why not 20?') // strict not equal
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
