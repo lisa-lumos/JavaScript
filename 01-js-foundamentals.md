@@ -261,6 +261,76 @@ if (answer === 20) {
 if (answer !== 23) console.log('Why not 20?') // strict not equal
 ```
 
+## logical operators
+```js
+const hasDriversLicense = true; 
+const hasGoodVision = true; 
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const isTired = false; 
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log('Sarah is able to drive!');
+} else {
+  console.log('Someone else should drive...');
+}
+```
+
+## switch
+```js
+const day = 'friday';
+switch (day) {
+  case 'monday': // day === 'monday'
+    console.log('Plan course structure');
+    console.log('Go to coding meetup');
+    break;
+  case 'tuesday':
+    console.log('Prepare theory videos');
+    break;
+  case 'wednesday':
+  case 'thursday':
+    console.log('Write code examples');
+    break;
+  case 'friday':
+    console.log('Record videos');
+    break;
+  case 'saturday':
+  case 'sunday':
+    console.log('Enjoy the weekend :D');
+    break;
+  default:
+    console.log('Not a valid day!');
+}
+```
+
+## Ternary operators
+```js
+const drink = age >= 18 ? 'wine' : 'water';
+console.log(drink);
+```
+
+## JS releases: ES5, ES6+, ESNext
+JS releases always have `backward compatibility` all the way to ES1, because of the fundamental principle "Do not break the web". So that even oldest code runs on the newest engine. The first version of JS has a lot of wired bugs, and these cannot be changed because of this compatibility goal. JS now has yearly release.
+
+JS do not have forward compatibility - Old engine cannot run newer code. But users may have an old engine. In dev env, to ensure that you can use the latest JS features, you just need the must up-to-date Google Chrome browser. In prod env, to make sure the code works on older engines, the code can be converted to ES5 (using transpile and polyfill) with Babel. 
+
+ES5 is fully supported in all browsers, down to IE9 from 2011
+
+ES6 and ES6+ are well supported in all modern browsers. And we can use most features in them in production with the help of transpiling and polyfilling. ES6 compatibility table shows what features are currently supported by which browser. 
+
+ESNext means future versions of JS. Some features in these are already usable in production with transpiling and polyfilling. 
+
+Why bother with ES5 still?
+- help you better understand how some JS features work behind the scenes
+- many tutorials and example code online are still written in ES5. 
+- as a developer, you often have to work on old code bases. 
+
+
+
 
 
 
