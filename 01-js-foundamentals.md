@@ -329,7 +329,35 @@ Why bother with ES5 still?
 - many tutorials and example code online are still written in ES5. 
 - as a developer, you often have to work on old code bases. 
 
+## Activating Strict mode
+Recommend to have strict mode on for all scripts. 
 
+Strict mode allows for secure JS code. Note that `'use strict'; ` needs to be the first statement in the script (commends are fine, but no code): 
+- strict mode forbids user to do certain things
+- it create visible errors in the developer console in certain situations. Without strict mode it may simply fail silently. 
+- it introduces a list of variable names that are reserved for potential future features. Such as `interface`, `private`, ...
+- ...
+
+Below code will not return anything. 
+```js
+// without strict mode
+let hasDriversLicense = false;
+const passTest = true;
+
+if (passTest) hasDriverLicense = true; // accidentally forgot s in the middle
+if (hasDriversLicense) console.log('I can drive :D'); // will not print
+```
+
+Below code will return an error "caught ReferenceError: hasDriverLicense is not defined"
+```js
+// use strict mode
+'use strict';
+let hasDriversLicense = false;
+const passTest = true;
+
+if (passTest) hasDriverLicense = true; // accidentally forgot s in the middle
+if (hasDriversLicense) console.log('I can drive :D'); 
+```
 
 
 
