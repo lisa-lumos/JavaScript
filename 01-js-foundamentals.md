@@ -359,9 +359,64 @@ if (passTest) hasDriverLicense = true; // accidentally forgot s in the middle
 if (hasDriversLicense) console.log('I can drive :D'); 
 ```
 
+## Functions
+```js
+function logger() { // define a function
+  console.log('Hello Lisa! ');
+}
+
+logger(); // call a function
+
+function makeJuice(nApples, nOranges) {
+  const juice = `Juice with ${nApples} apples and ${nOranges} oranges.`;
+  return juice;
+}
+
+const appleJuice = makeJuice(5, 0);
+console.log(appleJuice);
+
+const appleOrangeJuice = makeJuice(2, 4);
+console.log(appleOrangeJuice);
+
+```
 
 
 
+
+
+
+
+
+
+
+
+
+
+## Arrays
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Objects
 
 
 
