@@ -360,6 +360,8 @@ if (hasDriversLicense) console.log('I can drive :D');
 ```
 
 ## Functions
+### Use function declarations to create a function
+You can call function declarations before they are defined in the code, althrough this is not a best practice. 
 ```js
 function logger() { // define a function
   console.log('Hello Lisa! ');
@@ -378,19 +380,24 @@ console.log(appleJuice);
 const appleOrangeJuice = makeJuice(2, 4);
 console.log(appleOrangeJuice);
 
+const age1 = calcAge1(2010); // you can call calcAge1 before it is defined
+function calcAge1(birthYear) {
+  return 2023 - birthYear;
+}
 ```
 
+### Use function expression to create a function
+In JS, functions are actually values. Since they are values, we can store them in variables. 
 
+Compared with using function declarations, you cannot call a function expression before it is defined. Which one to use if just based on your preferences. 
 
-
-
-
-
-
-
-
-
-
+```js
+// Function expression
+const calcAge2 = function (birthYear) {
+  return 2023 - birthYear;
+}
+const age2 = calcAge2(2010);
+```
 
 ## Arrays
 
