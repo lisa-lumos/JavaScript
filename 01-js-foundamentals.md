@@ -396,8 +396,28 @@ Compared with using function declarations, you cannot call a function expression
 const calcAge2 = function (birthYear) {
   return 2023 - birthYear;
 }
-const age2 = calcAge2(2010);
+const age2 = calcAge2(2000);
 ```
+
+### arrow functions
+Added to JS in ES6. Excellent for simple one-liner functions. 
+
+```js
+const calcAge3 = birthYear => 2023 - birthYear; // one-liner no need return
+const age3 = calcAge3(2000);
+console.log(age3);
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2023 - birthYear;
+  const retirement = 65 - age;
+  return `${firstName} retires in ${retirement} years`; // return is needed
+}
+
+console.log(yearsUntilRetirement(2000, 'John')); 
+console.log(yearsUntilRetirement(1980, 'Bob'));
+```
+
+You cannot use `this` keyword in an arrow function. 
 
 ## Arrays
 
