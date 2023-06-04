@@ -420,10 +420,37 @@ console.log(yearsUntilRetirement(1980, 'Bob'));
 You cannot use `this` keyword in an arrow function. 
 
 ## Arrays
+Note that only primitive values can be immutable. Array is not a primitive val. But you cannot replace the entire array it if is declared as const. 
 
+```js
+// declare arrays
+const friends = ['Michael', 'Steven', 'Peter'];
+console.log(friends1);
 
+const friends2 = new Array('Michael', 'Steven', 'Peter'); // another way to declare
 
+console.log(friends[0]); // idx starts from 0
+console.log(friends[2]);
 
+console.log(friends.length); // get length of array
+console.log(friends[friends.length - 1]);
+
+friends[2] = 'Jay'; // change an array elem
+console.log(friends);
+
+const name = 'Link'; // an array can hold different datatypes in it
+const game = [name, 'Zelda', 60, friends];
+console.log(game);
+
+// array methods
+const newLength = friends.push('Jay'); // add elem to end of array
+friends.unshift('John'); // add elem to start of array
+const popped = friends.pop(); // rmv elem from end of array
+friends.shift(); // rmv elem from start of array
+console.log(friends.indexOf('Steven')); // find idx of an array elem, return -1 if not exist
+console.log(friends.includes('Steven')); // whether an elem exists in array, uses strict quality. Available since ES6
+
+```
 
 
 
