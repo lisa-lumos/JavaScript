@@ -449,37 +449,74 @@ const popped = friends.pop(); // rmv elem from end of array
 friends.shift(); // rmv elem from start of array
 console.log(friends.indexOf('Steven')); // find idx of an array elem, return -1 if not exist
 console.log(friends.includes('Steven')); // whether an elem exists in array, uses strict quality. Available since ES6
+```
+
+## Objects
+You can define un-ordered key-value pairs in objects. Keys are strings. 
+```js
+const knight = {
+  name: 'Link',
+  location: 'Hyrule',
+  enemy: 'Ganon',
+  attackPower: 10, 
+  friends: ['Zelda', 'Rauru']
+}; // object literal
+
+console.log(knight);
+console.log(knight.name); // using the dot notation
+console.log(knight['name']); // similar to above, using the bracket notation
+const myStr = 'Power';
+console.log(knight['attack' + myStr]); // you can use expression with bracket notation, but you cannot do this with the dot notation
+console.log(knight.friends[0]);
+
+const interestedIn = prompt('What do you want to know about the knight? Choose between name, location, enemy, attackPower, and friends. ');
+if (knight[interestedIn]) { // if the value exists
+  console.log(knight[interestedIn]);
+} else {
+  console.log('Wrong request! Choose between name, location, enemy, attackPower, and friends. ');
+}
+
+knight.headWear = "Majora's Mask"; // add new properties
+knight['defensePower'] = 20; // add new properties
 
 ```
 
+### Object methods
+```js
+const knight = {
+  name: 'Link',
+  location: 'Hyrule',
+  enemy: 'Ganon',
+  attackPower: 10, 
+  friends: ['Zelda', 'Rauru'],
+  calcNumOfFriends: function() { // requires a function expression, not a function declaration
+    return this.friends.length;
+  }
+}; 
+
+console.log(knight.calcNumOfFriends());
+console.log(knight['calcNumOfFriends']());
+
+// another case
+const knight = {
+  name: 'Link',
+  location: 'Hyrule',
+  enemy: 'Ganon',
+  attackPower: 10, 
+  friends: ['Zelda', 'Rauru'],
+  calcNumOfFriends: function() { // if this is a complex calculation
+    this.numOfFriends = this.friends.length; // creates a new property in cur object
+    return this.numOfFriends;
+  }
+}; 
+
+console.log(knight.calcNumOfFriends()); // calculate once
+console.log(knight.numOfFriends); // used multiple times
+console.log(knight.numOfFriends);
+console.log(knight.numOfFriends);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Objects
-
-
-
-
-
-
-
-
-
+```
 
 
 
