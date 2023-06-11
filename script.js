@@ -109,26 +109,38 @@
 // console.log(knight.calcNumOfFriends());
 // console.log(knight['calcNumOfFriends']());
 
-const knight = {
-  name: 'Link',
-  location: 'Hyrule',
-  enemy: 'Ganon',
-  attackPower: 10, 
-  friends: ['Zelda', 'Rauru'],
-  calcNumOfFriends: function() { // if this is a complex calculation
-    this.numOfFriends = this.friends.length; // creates a new property in cur object
-    return this.numOfFriends;
-  }
-}; 
+// const knight = {
+//   name: 'Link',
+//   location: 'Hyrule',
+//   enemy: 'Ganon',
+//   attackPower: 10, 
+//   friends: ['Zelda', 'Rauru'],
+//   calcNumOfFriends: function() { // if this is a complex calculation
+//     this.numOfFriends = this.friends.length; // creates a new property in cur object
+//     return this.numOfFriends;
+//   }
+// }; 
 
-console.log(knight.calcNumOfFriends()); // calculate once
-console.log(knight.numOfFriends); // used multiple times
-console.log(knight.numOfFriends);
-console.log(knight.numOfFriends);
+// console.log(knight.calcNumOfFriends()); // calculate once
+// console.log(knight.numOfFriends); // used multiple times
+// console.log(knight.numOfFriends);
+// console.log(knight.numOfFriends);
 
+// for (let i = 1; i <= 10; i++) {
+//   console.log(`loop number: ${i}`); 
+// }
 
+// for (let i = 1; ; i++) {
+//   if (i == 5) continue;
+//   console.log(`loop number: ${i}`); 
+//   if (i == 10) break;
+// }
 
-
+// let i = 1;
+// while (i < 10) {
+//   console.log(`loop number: ${i}`); 
+//   i++;
+// }
 
 
 

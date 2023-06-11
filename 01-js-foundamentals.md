@@ -451,6 +451,25 @@ console.log(friends.indexOf('Steven')); // find idx of an array elem, return -1 
 console.log(friends.includes('Steven')); // whether an elem exists in array, uses strict quality. Available since ES6
 ```
 
+### The for/while loop
+```js
+for (let i = 1; i <= 10; i++) {
+  console.log(`loop number: ${i}`); 
+}
+
+for (let i = 1; ; i++) {
+  if (i == 5) continue;
+  console.log(`loop number: ${i}`); 
+  if (i == 10) break;
+}
+
+let i = 1;
+while (i < 10) {
+  console.log(`loop number: ${i}`); 
+  i++;
+}
+```
+
 ## Objects
 You can define un-ordered key-value pairs in objects. Keys are strings. 
 ```js
@@ -515,16 +534,6 @@ console.log(knight.numOfFriends); // used multiple times
 console.log(knight.numOfFriends);
 console.log(knight.numOfFriends);
 
-
 ```
-
-
-
-
-
-
-
-
-
 
 
