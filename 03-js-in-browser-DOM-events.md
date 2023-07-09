@@ -10,6 +10,7 @@ DOM is not a part of the JS language. The DOM and their methods (such as querySe
 
 All browsers implement the same official DOM specification, so DOM manipulation works in all browsers. 
 
+Examples of DOM manipulation: 
 ```js
 // select an elem in the DOM (selected a <p> elem with its class name)
 console.log(document.querySelector('.message'));
@@ -26,12 +27,125 @@ console.log(document.querySelector('.guess').value);
 // set the val of this <input> elem
 document.querySelector('.guess').value = 23;
 
+// add event listener to a button element, 
+// listens for click, 
+// and runs the event handler function when the listened event happens
+document.querySelector('.check').addEventListener(
+  'click', 
+  function() {
+    // print val in <input> elem
+    console.log(document.querySelector('guess').value); 
+    // change the text in the <p> elem
+    document.querySelector('.message').textContent = "Correct number! ";
+  }
+);
 
 ```
 
+Note that is is better to have data in you code, instead of having them only in the DOM. 
+
+Examples of CSS styles manipulation: 
+```js
 
 
 
+
+
+
+```
+
+## The Final code
+"index.html":
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Guess My Number!</title>
+  </head>
+  <body>
+    <header>
+      <h1>Guess My Number!</h1>
+      <p class="between">(Between 1 and 20)</p>
+      <button class="btn again">Again!</button>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number" class="guess" />
+        <button class="btn check">Check!</button>
+      </section>
+      <section class="right">
+        <p class="message">Start guessing...</p>
+        <p class="label-score"> Score: <span class="score">20</span></p>
+        <p class="label-highscore">
+           Highscore: <span class="highscore">0</span>
+        </p>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+```
+
+"script.js":
+```js
+'use strict';
+
+// the state variables
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highScore = 0; 
+
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess, typeof guess);
+
+  if (!guess) { // When there is no input, guess = 0
+    displayMessage('No number!');
+  } else if (guess === secretNumber) { // When player wins
+    displayMessage('Correct Number!');
+    document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
+  } else if (guess !== secretNumber) { // When guess is wrong
+    if (score > 1) {
+      displayMessage(guess > secretNumber ? 'Too high!' : 'Too low!');
+      score--;
+      document.querySelector('.score').textContent = score; // update DOM display
+    } else {
+      displayMessage('You lost the game!');
+      document.querySelector('.score').textContent = 0;
+    }
+  }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  // document.querySelector('.message').textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+});
+```
 
 
 
