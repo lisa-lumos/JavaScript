@@ -42,17 +42,16 @@ document.querySelector('.check').addEventListener(
 
 ```
 
-Note that is is better to have data in you code, instead of having them only in the DOM. 
+Note that, it is better to have data in you code, instead of having them only in the DOM. 
 
 Examples of CSS styles manipulation: 
 ```js
+// It will be an inline style, applied directly in the html, using the `style` attribute. 
 
-
-
-
-
-
+document.querySelector('body').style.backgroundColor = '#60b347'; // select the body element, manipulate the style, set the background-color property, which is represented in camel case in js
+document.querySelector('.number').style.width = '30rem'; // select the elem with .number class name, manipulate the style, set the width 
 ```
+Note that, when manipulate a style, always supply a string. 
 
 ## The Final code
 "index.html":
