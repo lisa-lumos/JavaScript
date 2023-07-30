@@ -334,10 +334,13 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal); // this elem can only be available to be clicked on when it is not hidden, so, a click can be used to hide it
 
-document.addEventListener('keydown', function (e) {
+// keyboard events are global events, which do not apply to a specific elem
+// so listen on the whole document
+// keydown/keypress/keyup
+document.addEventListener('keydown', function (e) { // can access the event e
   // console.log(e.key);
-
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+  if (e.key === 'Escape' && 
+      !modal.classList.contains('hidden')) { // only close modal when it is not hidden
     closeModal();
   }
 });
