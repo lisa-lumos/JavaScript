@@ -318,20 +318,21 @@ const btnCloseModal = document.querySelector('.close-modal');
 const btnsOpenModal = document.querySelectorAll('.show-modal'); // if do not use querySelector instead of querySelectorAll, it will only return the first element, of all elems with this same class name. It now returns a NodeList object. Can use it like an array
 
 const openModal = function () {
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
+  modal.classList.remove('hidden'); // remove this class from the class list of this html elem. Do not use dot before the class name. Removing the whole class removes all properties set inside it. Much more convenient than setting a property directly in the code, such as modal.style.display = 'block', as it is hard to remember, and tedious if you have many properties to set/unset. 
+  overlay.classList.remove('hidden'); 
 };
 
 const closeModal = function () {
-  modal.classList.add('hidden');
+  modal.classList.add('hidden'); // add the class named hidden to the html elem
   overlay.classList.add('hidden');
 };
 
-for (let i = 0; i < btnsOpenModal.length; i++)
+for (let i = 0; i < btnsOpenModal.length; i++) {
   btnsOpenModal[i].addEventListener('click', openModal);
+}
 
 btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal); // this elem can only be available to be clicked on when it is not hidden, so, a click can be used to hide it
 
 document.addEventListener('keydown', function (e) {
   // console.log(e.key);
