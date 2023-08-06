@@ -136,7 +136,7 @@ document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 displayMessage('Start guessing...');
-  document.querySelector('.score').textContent = score;
+  document.querySelector('.score').textContent = score; // the number will be converted to string for display
   document.querySelector('.number').textContent = '?';
   document.querySelector('.guess').value = '';
 
@@ -404,8 +404,8 @@ p {
 }
 
 /* -------------------------- */
-/* CLASSES TO MAKE MODAL WORK */
-.hidden {
+/* classes to make modal work */
+.hidden { /* a hidden class */
   display: none;
 }
 
@@ -436,9 +436,11 @@ p {
 
 ```
 
-
-
-
+Other code snippets:
+```js
+const elemScore0 = document.querySelector('#score--0'); // select by id
+const elemScore0 = document.getElementById('score--0'); // another way to select by id, performance is a little bit better than the querySelector. 
+```
 
 
 
