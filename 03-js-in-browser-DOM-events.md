@@ -440,6 +440,8 @@ Other code snippets:
 ```js
 const elemScore0 = document.querySelector('#score--0'); // select by id
 const elemScore0 = document.getElementById('score--0'); // another way to select by id, performance is a little bit better than the querySelector. 
+elemDice.src = `dice-${diceNumber}.png`; // set the src attribute of elem to a diff str
+elemPlayer1.classList.toggle('player--active');
 ```
 
 
