@@ -444,6 +444,31 @@ elemDice.src = `dice-${diceNumber}.png`; // set the src attribute of elem to a d
 elemPlayer1.classList.toggle('player--active');
 ```
 
+When a winner was decided in a game, some buttons should no longer listen to clicks. To achieve this, a variable can be used to indicate the "playing or not" state, and the variable will be set to false if a winner was deicided. And the button's event listener functions can first check the state of the game, if playing, then execute the contents of the function. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
