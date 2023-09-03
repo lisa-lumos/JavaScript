@@ -14,13 +14,34 @@ But there is more about JS:
 - Non-blocking event loop. Takes long-running tasks, executes them in the background, and puts them back in the main thread, once they are finished. 
 
 ## The JavaScript Engine and Runtime
+The JS engine is a program that executes JS code. Every browser has its own JS engine. The most we known engine is Google's V8, which powers Google Chrome, but also Node.js, the JS runtime to build server side applications with JS, outside of any browser. 
 
+Any JS engine always contains:
+1. A call stack. Is where our code is executed, using execution contexts. 
+2. A heap. An unstructured memory pool, which stores all the objects the code needs
 
+In `compilation`, the entire source code is converted into machine code at once. This machine code is then written into a portable file, that can be executed on any computer. The execution can happen any long time after the compilation. 
 
+In `interpretation`, there is an interpreter, that runs through the source code, and executes it line by line. There is no "two step process" like in the compilation. Here, the source code still needs to be converted into machine code, but it simply happens right before it's executed, and not ahead of time. 
 
+JS used to be a purely interpreted language, but since interpreted languages are much slower than compiled languages, this low performance no longer works in modern fully fledged web applications. So modern JS engine now use a mix between compilation and interpretation, which is called "Just-in-time" compilation. 
 
+This "Just-in-time compilation" compiles the entire code into machine code at once, and then executes it right away. 
 
+When a piece of JS code enters the engine, the following steps happen:
+1. Parsing. The code is parsed into a data structure, called the Abstract Syntax Tree (AST). This works by splitting up each line of code into pieces that are meaningful to the language, then saving those pieces into a tree in a structured way. This step also checks for syntax errors. 
+2. Compilation. Takes the generated AST from prev step, and compile it into machine code. 
+3. Execution. The machine code from the prev step goe executed right away. 
+4. Optimization. Note that the compilation creates a very un-optimized code in the beginning, so it can start executing ASAP. Then in the background, the code is being optimized and re-compiled, when the machine code is executing. This process can be done multiple times, and after each optimization, the prv machine code will be replaced with the newer version, without stopping the execution. 
 
+This process is what makes modern engines, such as V8, so fast. This parsing/compilation/optimization happens in some special threads inside the engine, that is in-accessible from the call stack of the execution. 
+
+JS runtime can be compared to a big box, which includes all the things that we need to use JS, for example, in the browser. 
+- JS engine. The heart of any JS runtime is always a JS engine. 
+- Web APIs access. Having the engine alone is not enough. We also need access to the web APIs (everything related to the DOM, timers, console.log(...)), which are functionalities provided to the JS engine, but not part of the JS language. JS gets access to these APIs through the global window object. 
+- Callback queue. A data structure that contains all the callback functions, that are ready to be executed. Such as, the callback function from the DOM event listener, for a button. When an event happens, the callback function will be called. It will first be put into the callback queue, then when the stack is empty, the callback function is passed to the stack, by event loop, so it can be executed. 
+
+Out of the browser, then JS in running in Node.js, the Web APIs in the above structure is replaced by C++ bindings and thread pool. 
 
 ## Execution Contexts and The Call Stack
 
