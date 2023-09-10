@@ -63,9 +63,9 @@ The execution context is generated in a creation phase, which happens right befo
 
 Note that, the execution contexts belonging to arrow functions do not have the `arguments` object, nor the `this` keyword. Instead, they use those from their closest regular function parent. 
 
+The call stack is a place where execution contexts get stacked on top of each other, to track where we are in the program's execution. The execution context that is on the top of the stack is the one that is currently running. When it's finished running, it will be removed from the stack, and execution will go back to the previous execution context. 
 
-
-
+The execution of the global execution context will stop (being poped off the stack), only when we close the browser tab/window. 
 
 
 
