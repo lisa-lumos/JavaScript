@@ -44,6 +44,35 @@ JS runtime can be compared to a big box, which includes all the things that we n
 Out of the browser, then JS in running in Node.js, the Web APIs in the above structure is replaced by C++ bindings and thread pool. 
 
 ## Execution Contexts and The Call Stack
+Assume the code has just finished compiling, and now ready to be executed. A "global execution context" is created for the top-level code (the code that is not inside any function). In any JS project, there is only ever one global execution context. 
+
+After the top-level code finishes execution, the execution of functions, and the waiting for callbacks happens. For each and every function call, a new execution context will be created, containing all the info to run that function. Same with methods. 
+
+All of the execution contexts together, make up the call stack. 
+
+After all functions are done executing, the engine will keep waiting for callback functions to arrive from event loop, so it can execute them. 
+
+Each function gets its own execution context, as soon as the function is called. 
+
+What is inside an execution context?
+1. Variable Environment. Stores all variables and function declarations, and an `arguments` object, which contains all the arguments that were passed into the function, that the current execution context belongs to. 
+2. Scope chain. A function can also access variables outside of the function. 
+3. `this` keyword. 
+
+The execution context is generated in a creation phase, which happens right before execution. 
+
+Note that, the execution contexts belonging to arrow functions do not have the `arguments` object, nor the `this` keyword. Instead, they use those from their closest regular function parent. 
+
+
+
+
+
+
+
+
+
+
+
 
 ## Scope and The Scope Chain
 
