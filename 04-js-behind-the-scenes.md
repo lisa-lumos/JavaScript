@@ -67,14 +67,22 @@ The call stack is a place where execution contexts get stacked on top of each ot
 
 The execution of the global execution context will stop (being poped off the stack), only when we close the browser tab/window. 
 
-
-
-
-
-
-
-
 ## Scope and The Scope Chain
+Scoping controls how a program's variables are organized and accessed by the JS engine. It answers the question of "where do variables live?". 
+
+JS uses lexical scoping, where the way variables are organized/accessed is controlled entirely by the placement of functions/blocks in the code. e.g., a function that is written inside another function has access to the variables of the parent function. 
+
+Scope is the place in which a certain variable is declared. 
+
+
+
+
+
+
+
+
+
+
 
 ## Scoping in Practice
 
