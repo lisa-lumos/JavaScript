@@ -72,17 +72,24 @@ Scoping controls how a program's variables are organized and accessed by the JS 
 
 JS uses lexical scoping, where the way variables are organized/accessed is controlled entirely by the placement of functions/blocks in the code. e.g., a function that is written inside another function has access to the variables of the parent function. 
 
-Scope is the place in which a certain variable is declared. 
+"Scope" is the place in which a certain variable is declared, which is the variable environment inside the function's execution context. In JS, there is global/function/block scopes. 
 
+The "scope of a variable" is the entire region in the code where a certain variable can be accessed. 
 
+The 3 scope types:
+- global scope. Outside of any function/block. Variables declared here are accessible everywhere. 
+- function scope. Variables declared here are only accessible inside the function. Also called local scope. Function declarations/expressions, arrow functions, all create their own scope. 
+- block scope (es6). Anything between curly braces is a block. Variables declared inside a block are only accessible inside that block. Block scopes only apply to variables declared with `let` or `const`. "let and const variables are block scoped". Which means, if you declare a variable using `var` inside a block, it will still be accessible outside of the block, and be scoped to the current function, or to the global scope. 
 
+Starting in ES6, all functions are now also block scoped, in strict mode. 
 
+A scope can only look up in a scope chain, it will never have access to the variables of an inner scope. The scope chain only works upwards, not downward, nor sideways. 
 
+Variables in the global scope are called global scopes. 
 
+The order of function calls is not relevant to the scope chain at all. The scope chain decides what variables are valid, not where the functions are called. 
 
-
-
-
+The function declaration can be used before or after (above or below) the function being called. The function expression have to be defined before (above) it got called. 
 
 ## Scoping in Practice
 
