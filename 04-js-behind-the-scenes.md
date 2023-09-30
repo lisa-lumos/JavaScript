@@ -79,9 +79,9 @@ The "scope of a variable" is the entire region in the code where a certain varia
 The 3 scope types:
 - global scope. Outside of any function/block. Variables declared here are accessible everywhere. 
 - function scope. Variables declared here are only accessible inside the function. Also called local scope. Function declarations/expressions, arrow functions, all create their own scope. 
-- block scope (es6). Anything between curly braces is a block. Variables declared inside a block are only accessible inside that block. Block scopes only apply to variables declared with `let` or `const`. "let and const variables are block scoped". Which means, if you declare a variable using `var` inside a block, it will still be accessible outside of the block, and be scoped to the current function, or to the global scope. 
+- block scope (es6). Anything between curly braces is a block. Variables/functions declared inside a block are only accessible inside that block. Block scopes only apply to variables declared with `let` or `const`. "let and const variables are block scoped". Which means, if you declare a variable using `var` inside a block, it will still be accessible outside of the block, and be scoped to the current function, or to the global scope. 
 
-Starting in ES6, all functions are now also block scoped, in strict mode. 
+Starting in ES6, all functions are now also block scoped, in "strict mode". 
 
 A scope can only look up in a scope chain, it will never have access to the variables of an inner scope. The scope chain only works upwards, not downward, nor sideways. 
 
@@ -92,6 +92,15 @@ The order of function calls is not relevant to the scope chain at all. The scope
 The function declaration can be used before or after (above or below) the function being called. The function expression have to be defined before (above) it got called. 
 
 ## Scoping in Practice
+Note that if a function A's declaration happened above a global variable x was defined, and it uses that variable x, it is fine, as long as x was defined before the function A got called. 
+
+You can declare function B inside function A, and use it there. 
+
+JS will always try to look for a variable in the current scope, if not found, then go up one step in the scope chain, and so on. So the variable in the closest scope takes precedence on the same named variable in a further away scope. 
+
+So you can have variables of the same names in different scopes. The same explains why different functions can have same argument names - they are in a different scope. 
+
+You can re-assign outer scope's variable with no problem, from a inner scope. 
 
 ## Variable Environment: Hoisting and The TDZ
 
