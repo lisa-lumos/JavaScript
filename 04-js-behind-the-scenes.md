@@ -103,6 +103,15 @@ So you can have variables of the same names in different scopes. The same explai
 You can re-assign outer scope's variable with no problem, from a inner scope. 
 
 ## Variable Environment: Hoisting and The TDZ
+Hoisting is a mechanism that makes some types of variables accessible (usable) in the code, before they are actually declared in the code. Behind the scenes, the code was scanned for variable declarations, before it is executed. This happens during the creation phase of the execution context. 
+
+Function declarations are hoisted, and the initial val in the variable env is set to the actual function. In practice, this means we can use function declarations before they are actually declared in the code. 
+
+Variables defined with var are also hoisted, by works in a different way. When a var variable is accessed before it is declared in the code, you do not get the declared value, you get undefined. This can be confusing and cause most of the bugs in JS. So modern JS we almost never use var. 
+
+let and const variables are not hoisted, practically, because they live in a temporal dead zone (TDZ). It is un-accessible before it got declared - you will get an error. 
+
+For function expressions, and arrow functions, whether or not they are hoisted depends on whether they were created using var/const/let. Because they are essentially variables. 
 
 ## Hoisting and TDZ in Practice
 
