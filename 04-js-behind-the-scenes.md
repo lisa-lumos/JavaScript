@@ -114,6 +114,12 @@ let and const variables are not hoisted, practically, because they live in a tem
 For function expressions, and arrow functions, whether or not they are hoisted depends on whether they were created using var/const/let. Because they are essentially variables. 
 
 ## Hoisting and TDZ in Practice
+Best practices:
+- Avoid using var to declare variables. 
+- declare your variables at the top of each scope
+- declare all your functions first, then use them only after the declaration
+
+In the browser, `window` is the global object of JS in the browser. When you type `window` in the Console and hit return, you can see all global objects. The variables declared with `var` will create properties on this window object, but the variables declared with `let`/`const` will not do this. For example, if you declare `var x = 1;`, then you can verify this using `console.log(x === window.x);`, which returns true. So, variables declared with `var` can have some implications in some cases. 
 
 ## The this Keyword
 
