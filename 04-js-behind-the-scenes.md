@@ -122,8 +122,24 @@ Best practices:
 In the browser, `window` is the global object of JS in the browser. When you type `window` in the Console and hit return, you can see all global objects. The variables declared with `var` will create properties on this window object, but the variables declared with `let`/`const` will not do this. For example, if you declare `var x = 1;`, then you can verify this using `console.log(x === window.x);`, which returns true. So, variables declared with `var` can have some implications in some cases. 
 
 ## The this Keyword
+One of the 3 components of any execution context. 
+
+It points to the owner of the function:
+- When a method (aka, a function attached to an object) is called, the `this` inside the method refers to the object. 
+- When a normal function (not attached to an object) is called, the `this` is `undefined` in strict mode, otherwise, it points to the global object, for example, the window object in the browser. 
+- An arrow function do not get their own `this` keyword. If you use `this` inside an arrow function, it will refer to the `this` keyword of the surrounding (parent)function. In this case, it is also called the "lexical this keyword". 
+- If a function is called as an event listener, then `this` points to the DOM element that the handler function is attached to. 
 
 ## The this Keyword in Practice
+
+
+
+
+
+
+
+
+
 
 ## Regular Functions vs. Arrow Functions
 
