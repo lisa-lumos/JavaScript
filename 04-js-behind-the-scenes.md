@@ -125,23 +125,66 @@ In the browser, `window` is the global object of JS in the browser. When you typ
 One of the 3 components of any execution context. 
 
 It points to the owner of the function:
-- When a method (aka, a function attached to an object) is called, the `this` inside the method refers to the object. 
-- When a normal function (not attached to an object) is called, the `this` is `undefined` in strict mode, otherwise, it points to the global object, for example, the window object in the browser. 
+- When a method (aka, a function attached to an object) is called, the `this` inside the method refers to the object (the caller). 
+- When a normal function (not attached to an object) is called, the `this` is `undefined` in strict mode, otherwise, it points to the global object, for example, the Window object in the browser. 
 - An arrow function do not get their own `this` keyword. If you use `this` inside an arrow function, it will refer to the `this` keyword of the surrounding (parent)function. In this case, it is also called the "lexical this keyword". 
 - If a function is called as an event listener, then `this` points to the DOM element that the handler function is attached to. 
 
 ## The this Keyword in Practice
+```js
+"use strict";
+console.log(this);    // will return the Window object of browser
 
+const calcAge = function(birthYear) {
+  console.log(2050 - birthYear);
+  console.log(this);  // will print undefined, because this function doesn't have an owner
+};
+calcAge(2005); 
 
+const calcAgeArrow = birthYear => {
+  console.log(2050 - birthYear);
+  console.log(this);  // will print Window object, refers to the this of its parent, which is the global scope
+};
+calcAgeArrow(2005); 
 
+const andy = {
+  year: 2005,
+  calcAge: function() {
+    console.log(this); 
+    console.log(2050 - this.year);
+  },
+}
+// will print the andy object, because it is the CALLER of this method
+andy.calcAge(); 
 
+const jane = {
+  year: 2000,
+}
+// method borrowing
+jane.calcAge = andy.calcAge; // assign a calcAge function to jane object
+jane.calcAge(); // will print and use year parameter in jane, because jane is the CALLER of this method
 
+const f = andy.calcAge; // now assign this method to a variable
+f(); // will print undefined, and then an error, because undefined doesn't have year var defined in it. 
 
-
-
-
+```
 
 ## Regular Functions vs. Arrow Functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Primitives vs. Objects (Primitive vs. Reference Types)
 
