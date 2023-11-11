@@ -170,21 +170,100 @@ f(); // will print undefined, and then an error, because undefined doesn't have 
 ```
 
 ## Regular Functions vs. Arrow Functions
+```js
+const andy = {
+  firstName: 'Andy',
+  year: 2005,
+  calcAge: function() {
+    console.log(this); 
+    console.log(2050 - this.year);
+  },
+  // the arrow function doesn't get its own this keyword
+  // it will use the firstName of the Window object, which is not defined
+  greet: () => console.log(`Hey ${this.firstName}`),
+};
 
+andy.greet(); // Hey undefined
+```
+This behavior can become quite dangerous. If we use var to declare variables, it actually create properties on the global object, which may get printed out in that window function, if the name matches. 
 
+Best practice: Never ever use an arrow function as a method. 
 
+```js
+const andy = {
+  firstName: 'Andy',
+  year: 2005,
+  calcAge: function() {
+    console.log(this); 
+    console.log(2050 - this.year);
 
+    const isMillennial = function() {
+      console.log(this); // undefined, because it is a regular function call
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillennial();
+  },
+};
 
+andy.calcAge();
+```
 
+The pre-ES6 solution, is to preserve the this in a const variable:
+```js
+const andy = {
+  firstName: 'Andy',
+  year: 2005,
+  calcAge: function() {
+    console.log(this); 
+    console.log(2050 - this.year);
 
+    const self = this; // can preserve the this keyword to use in the below regular function
+    const isMillennial = function() {
+      console.log(self); // andy
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isMillennial();
+  },
+};
 
+andy.calcAge();
+```
 
+The post-ES6 solution, is to use the arrow function, so it can use its parent's scope:
+```js
+const andy = {
+  firstName: 'Andy',
+  year: 2005,
+  calcAge: function() {
+    console.log(this); 
+    console.log(2050 - this.year);
 
+    isMillennial = () => {
+      console.log(this); // andy
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillennial();
+  },
+};
 
+andy.calcAge();
+```
 
+The legacy `arguments` keyword. Only need to know it exists. Modern JS has a better way to deal with multiple parameters now. 
+```js
+const addTwo = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addTwo(2, 5); // see an array of these 2 input elements
+addTwo(2, 5, 8, 12); // see an array of these 4 input elements. Can use them in this regular function
 
-
-
+var addArrow = (a, b) => {
+  console.log(arguments); // Error: arguments is not defined
+  return a + b;
+}; // the arrow function doesn't have this arguments keyword
+addArrow(2, 5, 8);
+```
 
 ## Primitives vs. Objects (Primitive vs. Reference Types)
 
