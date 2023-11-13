@@ -266,6 +266,43 @@ addArrow(2, 5, 8);
 ```
 
 ## Primitives vs. Objects (Primitive vs. Reference Types)
+The difference between the way primitive types, and objects, are stored in memory. 
+
+Many people confuse:
+```js
+let age = 20;
+let prvAge = age;
+age = 21;
+console.log(age);     // 21
+console.log(prvAge);  // 19
+
+const Andy = {
+  name: 'Andy',
+  age: 10,
+};
+
+const Jane = Andy; 
+Jane.age = 11;
+
+console.log(Andy); // they all point to the Andy object
+console.log(Jane); // they all point to the Andy object
+```
+
+In java, there are 7 primitive types: Number, String, Boolean, Undefined, Null, Symbol, BigInt. Primitive types are stored in the call stack, in the execution contexts in which they are declared. 
+
+Everything else are objects, such as Object literal, Arrays, Functions, etc. They are all reference types. All reference types are stored in the memory heap. 
+
+For example a primitive values named age is stored in an address in the memory, who holds the value 10. Then if another value named prvAge is declared to be same value as age. So prvAge points to the same exact memory address, with the value 10. Next, when the age is changed to 11, a new space in memory was allocated, to store the value of 11, and the age variable points to this new address. 
+
+But with objects, because they live on the heap, when a new object is created, it is created on a heap, and has a heap address. The object identifier that lives in the call stack, doesn't point directly to the heap, instead, it points to a new piece of memory created on the stack, which then points to the heap. 
+
+Objects are stored in this way, because they might be too large to be stored in the stack, while heap is like an almost unlimited memory pool. 
+
+The Andy object here is constant, we can modify it because we are not changing its address in the call stack, we are only changing the value in where this address points to, in the heap. 
+
+This implies that, whenever you copy an object, you are just creating a new variable that points to the exact same object. 
+
+There are 3 more topics on how JS works behind the scenes, including prototypal inheritance, event loop, and how the DOM works, which will be covered in later chapters. 
 
 ## Primitives vs. Objects in Practice
 
