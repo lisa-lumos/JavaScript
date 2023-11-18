@@ -294,7 +294,7 @@ Everything else are objects, such as Object literal, Arrays, Functions, etc. The
 
 For example a primitive values named age is stored in an address in the memory, who holds the value 10. Then if another value named prvAge is declared to be same value as age. So prvAge points to the same exact memory address, with the value 10. Next, when the age is changed to 11, a new space in memory was allocated, to store the value of 11, and the age variable points to this new address. 
 
-But with objects, because they live on the heap, when a new object is created, it is created on a heap, and has a heap address. The object identifier that lives in the call stack, doesn't point directly to the heap, instead, it points to a new piece of memory created on the stack, which then points to the heap. 
+But with objects, because they live on the heap, when a new object is created, it is created on a heap, and has a heap address. The object identifier that lives in the call stack, doesn't point directly to the heap, instead, it points to a new piece of memory created on the stack, which then points to the heap. So a constant object can change its elements, but cannot change the address value in the call stack. 
 
 Objects are stored in this way, because they might be too large to be stored in the stack, while heap is like an almost unlimited memory pool. 
 
@@ -305,42 +305,26 @@ This implies that, whenever you copy an object, you are just creating a new vari
 There are 3 more topics on how JS works behind the scenes, including prototypal inheritance, event loop, and how the DOM works, which will be covered in later chapters. 
 
 ## Primitives vs. Objects in Practice
+Shallow copy: 
+```js
+const apple = {
+  color: 'green',
+  weight: 1,
+  seeds: [1, 2, 3],
+};
 
+const appleCopy = Object.assign({}, apple); // this merges an empty object with apple object, returning a new object. 
+appleCopy.color = 'red';
+appleCopy.seeds.push[4];
 
+// the color value is different in these 2 objects, 
+// but the seeds array size is now 4 in both. 
+console.log(apple); 
+console.log(appleCopy); 
+```
 
+Note that appleCopy is a real copy of the original, not just a different reference name pointing to the one single object. 
 
+However, this `Object.assign()` only works on the first level, which means, if you have an inner object inside the object, then this inner object will still be the same, and point to the same place in memory. Which means, this only creates a "shallow copy", not a "deep clone". 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+A deep clone is not easy to achieve, usually we do this using an external library, such as Lo-Dash. 
