@@ -54,12 +54,100 @@ const [p=1, q=1, r=1] = [8, 9]; // the val of r will be 1
 
 Whenever JS sees square bracket on the left hand side of the equal sign, it knows it should do destructuring. 
 
-
-
-
-
 ## Destructuring Objects
+```js
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  // ES6 enhanced object literals
+  openingHours,
+
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
+
+// useful when dealing with 3rd-party data
+// since in an object, the order of its elems doesn't matter, so no longer need to skip
+// by default, the variable names are same with the property names
+const {name, openingHours, categories} = restaurant;
+console.log(name);
+
+// give unpacked variables a different name
+const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+console.log(restaurantName);
+
+// have default values if the attribute doesn't exist in the object
+const {menu = [], starterMenu: starters = []} = restaurant; 
+console.log(menu, starters);
+
+// mutate variables while destructuring objects
+let a = 11;
+let b = 9;
+const obj = {a: 23, b: 7, c: 14};
+
+// this gives an error: {a, b} = obj; the fix is to wrap whole thing in (). 
+({a, b} = obj);
+console.log(a, b); // returns 23 an 7
+
+// nested objects
+const {fri} = openingHours;
+console.log(fri);
+
+const {fri: {open, close}} = openingHours;
+console.log(open, close);
+// give then different var names
+const {fri: {open: o, close: c}} = openingHours;
+console.log(o, c);
+
+
+
+
+
+
+
+
+
+
+
+```
 
 ## The Spread Operator (...)
 
