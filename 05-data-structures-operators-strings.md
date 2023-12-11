@@ -86,6 +86,7 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  // this function destructure the object passed into it
   orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
@@ -137,19 +138,36 @@ console.log(open, close);
 const {fri: {open: o, close: c}} = openingHours;
 console.log(o, c);
 
-
-
-
-
-
-
-
-
-
-
+// often, in JS, we have functions with a lot of parameters. 
+// then as a user, it can be hard to figure out the order of these parameters. 
+// So, instead of defining the parameters manually,
+// we can just pass an object into the function as an argument,
+// and the function will then immediately destructure the object. 
+restaurant.orderDelivery({ // pass an object into the function
+  time: '22:30',
+  address: '1234 abc street',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 ```
 
 ## The Spread Operator (...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Rest Pattern and Parameters
