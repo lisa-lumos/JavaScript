@@ -152,23 +152,39 @@ restaurant.orderDelivery({ // pass an object into the function
 ```
 
 ## The Spread Operator (...)
+Introduced in ES6. Works on all iterables, including arrays. Most of the built-in JS data structures are iterables, except objects. It can be arrays, strings, maps, sets, etc. 
 
+```js
+const arr = [1, 2, 3];
 
+// spread elems in the prv array, used to create a new array
+// so newArr becomes [0, 1, 2, 3, 4]
+const newArr = [0, ...arr, 4]; 
 
+// can be used to pass multiple elems into a function
+console.log(...newArr); 
 
+// More examples:
+// add one more menu item to prv restaurant object
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// copy an existing array (shallow copy)
+const copyOfMenu = [...restaurant.mainMenu];
+// join multiple arrays
+a = [1, 2, 3];
+b = [4, 5];
+const combined = [...a, ...b];
 
+// use spread operator on strings
+const str = 'Lisa';
+const letters = [...str, '', 'Lumos']; // ['L', 'i', 's', 'a', ' ', 'Lumos']
 
+// Since ES 2018, the spread operator also works on objects, 
+// even if they are not iterables. 
+const copyOfRestaurantObj = {...restaurant};  // shallow copy of objs
+const copyOfRestaurantUpdate = {foundedIn: 2001, ...restaurant, founder: 'Lisa'}; 
+```
 
-
-
-
-
-
-
-
-
-
-
+The big difference between array-destructuring and the spread operator, is that the spread operator takes all elems from the array, and, it doesn't create new variables. So, we can only use it in places where we would otherwise write comma-separated values. 
 
 ## Rest Pattern and Parameters
 
