@@ -186,8 +186,51 @@ const copyOfRestaurantUpdate = {foundedIn: 2001, ...restaurant, founder: 'Lisa'}
 
 The big difference between array-destructuring and the spread operator, is that the spread operator takes all elems from the array, and, it doesn't create new variables. So, we can only use it in places where we would otherwise write comma-separated values. 
 
-## Rest Pattern and Parameters
+## Rest Pattern, Rest Parameters (for the rest of elems)
+Collect multiple items, and condense them into an array. Called rest, because it takes the rest of the elems, in the destructuring assignment. It must be the last element before the equal sign. 
 
+```js
+// spread, because it is on right side of =
+const arr = [1, 2, ...[3, 4]]; 
+
+// rest, because on left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); // a, b, [3, 4, 5]
+
+// more examples
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu, 
+  ...restaurant.starterMenu
+];
+
+// with objects, ordering is not needed
+const {sat, ...weekdays} = restaurant.openingHours; // will get fri and thur
+ 
+// with functions, "Rest arguments"
+const add = function (...numbers) {
+  // this function can take a single value, multiple values, or an array
+  // which makes it super flexible
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum = sum + numbers[i];
+  }
+  console.log(sum);
+};
+add(2, 3);
+add(2, 3, 4);
+const x = [5, 6, 7];
+add(...x);
+
+// more examples
+// if in the restaurant object, we have a function defined as:
+orderPizza: function (mainIngredient, ...otherIngredients) {
+  console.log(mainIngredient); // an elem
+  console.log(otherIngredients); // an array of the rest of the elems. 
+},
+
+restaurant.orderPizza('mushrooms', 'onions', 'olives');
+restaurant.orderPizza('mushrooms'); // the otherIngredients will be []. 
+```
 
 ## Short Circuiting (&& and ||)
 
