@@ -233,9 +233,51 @@ restaurant.orderPizza('mushrooms'); // the otherIngredients will be [].
 ```
 
 ## Short Circuiting (&& and ||)
+Logical operators can use any data type, return and data type, and they can do short-circuiting.
 
+For the OR operator, if the first value is a truthy value, it will immediately return that first value. It will not even look at the 2nd value, which is what short-circuiting means.   
+
+For practical uses, we can use the OR operator to set default values, and use the AND operator to execute code in the second part, if the 1st part is true. 
+
+```js
+// the result of the OR operator doesn't have to be a boolean
+console.log(3 || 'lisa'); // 3
+console.log('' || 'lisa'); // lisa
+console.log(true || 0); // true
+console.log(undefined || null); // null. It returns the last val, because first val is falsy, even if 2nd val is also falsy
+
+// example
+// if restaurant have this value, then use it, otherwise use default 10
+// instead of using turnery operator, we can use short circuiting
+// Note that if this val does exists, but is 0, it will not behave as we wanted
+// Solution will be in the next section
+const guest1 = restaurant.nGuests ? restaurant.nGuests : 10;
+const guest1 = restaurant.nGuests || 10;
+
+// the AND operator
+console.log(0 && 'lisa'); // 0
+console.log(2 && 'lisa'); // lisa
+
+// example
+// the if statement can be replaced by short circuiting
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+```
+
+`''`, `undefined`, `null` are considered as falsy values in JS. 
 
 ## The Nullish Coalescing Operator (??)
+
+
+
+
+
+
+
+
+
 
 ## Logical Assignment Operators
 
