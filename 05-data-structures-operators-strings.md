@@ -269,19 +269,53 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 `''`, `undefined`, `null` are considered as falsy values in JS. 
 
 ## The Nullish Coalescing Operator (??)
+Was introduced in ES2020. Will check for nullish vals, instead of falsy vals. Nullish values include `null` and `undefined`. It doesn't include 0 or empty string. 
+```js
+restaurant.numGuests = 0;
 
+// the val will be 10 instead of 0, it is not what we wanted
+const guests = restaurant.numGuests || 10;
 
-
-
-
-
-
-
-
+// the val will be 0, as wanted. 
+const guestCorrect = restaurant.numGuests ?? 10;
+```
 
 ## Logical Assignment Operators
+Was introduced in ES2021. 
+```js
+const restaurant1 = {
+  name: 'Capri',
+  numGuests: 20,
+};
 
+const restaurant2 = {
+  name: 'La piazza',
+  owner: 'Giovanni Rossi',
+};
 
+// assume we need to add numGuests property to objects that do not have them
+// and set to a default val
+restaurant1.numGuests = restaurant1.numGuests || 10;
+restaurant2.numGuests = restaurant2.numGuests || 10;
+
+// the OR assignment operator will make above code concise:
+restaurant1.numGuests ||= 10;
+restaurant2.numGuests ||= 10;
+
+// according to prv section, it should be replaced by 
+restaurant1.numGuests ??= 10;
+restaurant2.numGuests ??= 10;
+
+// similarly, there is also logical AND assignment operator &&=
+restaurant1.owner &&= '<anonymous>'; // will change nothing in the object
+restaurant2.owner &&= '<anonymous>'; // this val will be '<anonymous>'
+
+// note that, restaurant1.owner &&= '<anonymous>'; is different from
+// restaurant1.owner = restaurant1.owner && '<anonymous>';
+// because the former doesn't create a new property in the object
+// while the latter creates this property, and set its val to undefined. 
+// so what &&= does, is that if the property already exist, then set it. 
+```
 
 ## Looping Arrays: The for-of Loop
 
