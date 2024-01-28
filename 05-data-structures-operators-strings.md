@@ -318,6 +318,29 @@ restaurant2.owner &&= '<anonymous>'; // this val will be '<anonymous>'
 ```
 
 ## Looping Arrays: The for-of Loop
+Introduced in ES6. No longer need to create counters and conditions like a regular loop. Can still use "continue" or "break". 
+
+```js
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// to get the idx, will need more work
+for (const item of menu.entries()) {
+  console.log(item) // displays the idx and the elem, in a 2-elem array
+  // the old way to get them:
+  console.log(`idx: ${item[0]}, val: ${item[1]}`);
+}
+
+// use destructuring
+for (const [idx, val] of menu.entries()) {
+  console.log(`idx: ${idx}, val: ${val}`);
+}
+
+console.log(menu.entries()); // prints the array iterator itself
+console.log([...menu.entries()]); // prints an array of 2-elem arrays
+
+```
 
 ## Enhanced Object Literals
 
