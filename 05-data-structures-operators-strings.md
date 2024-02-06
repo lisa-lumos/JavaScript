@@ -343,6 +343,65 @@ console.log([...menu.entries()]); // prints an array of 2-elem arrays
 ```
 
 ## Enhanced Object Literals
+```js
+// below object is inside the restaurant object
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0,
+    close: 24,
+  },
+};
+
+// before ES6
+const restaurant = {
+  name: 'La piazza',
+  owner: 'Giovanni Rossi',
+  openingHours: openingHours,
+
+  printHello: function (name) { // functions
+    console.log('Hello ${name}!');
+  },
+};
+
+// with ES6
+// when property name is same with the variable name
+const restaurant = {
+  name: 'La piazza',
+  owner: 'Giovanni Rossi',
+  openingHours, // enhanced object literals
+
+  printHello(name) { // functions
+    console.log('Hello ${name}!');
+  },
+};
+
+// with ES6, can compute property names, not just computing property values
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [day-${2 + 4}]: { // can calculate property name, inside [...]
+    open: 0,
+    close: 24,
+  },
+};
+
+```
 
 ## Optional Chaining (?.)
 
