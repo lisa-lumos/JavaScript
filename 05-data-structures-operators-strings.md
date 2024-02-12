@@ -404,6 +404,38 @@ const openingHours = {
 ```
 
 ## Optional Chaining (?.)
+Assume this restaurant data came from a web api, and we want to know whether this restaurant open on Monday or not. 
+
+```js
+console.log(restaurant.openingHours.mon); // undefined
+console.log(restaurant.openingHours.mon.open); // type error, because undefined doesn't have open property
+
+// so need to first check if this mon property exists
+if (restaurant.openingHours.mon):
+  console.log(restaurant.openingHours.mon.open);
+
+// now assume the openingHours property is also optional
+// then have to check for both
+// which gets harder to handle when you have deeply nested objects,
+// with a lot of optional properties
+
+// Optional chaining was introduced in ES2020, to solve this problem
+
+// only if monday exists, the open property will be read,
+// otherwise, undefined will be returned 
+console.log(restaurant.openingHours.mon?.open); 
+
+// can have multiple optional chainings
+console.log(restaurant.openingHours?.mon?.open); 
+
+for (const day of days) {
+  open = restaurant.openingHours[day]?.open;
+  console.log(`On ${day}, we open ast ${open}`);
+}
+```
+
+
+
 
 
 ## Looping Objects: Object Keys, Values, and Entries
