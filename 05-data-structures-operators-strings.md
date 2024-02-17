@@ -429,14 +429,25 @@ console.log(restaurant.openingHours.mon?.open);
 console.log(restaurant.openingHours?.mon?.open); 
 
 for (const day of days) {
-  open = restaurant.openingHours[day]?.open;
+  // if the property doesn't exist,
+  // instead of undefined, display "closed"
+  // so, used the nullish coalescing operator
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
   console.log(`On ${day}, we open ast ${open}`);
 }
+
+// optional chaining also works on methods
+// if method is not exist, do not call it
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist. ');
+console.log(restaurant.orderNoodles?.(0, 1) ?? 'Method does not exist. ');
+
+// optional chaining also works on arrays
+const users = [
+  {name: 'lisa', email: 'lisa@email.com'}
+];
+console.log(users[0]?.name ?? 'empty');
+
 ```
-
-
-
-
 
 ## Looping Objects: Object Keys, Values, and Entries
 
