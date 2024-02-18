@@ -450,7 +450,26 @@ console.log(users[0]?.name ?? 'empty');
 ```
 
 ## Looping Objects: Object Keys, Values, and Entries
+```js
+// return an array of keys in this objects
+const properties = Object.keys(openingHours);
+console.log(properties);
+console.log(`We are open on ${properties.length} days`);
 
+// loop over the keys of the object "openingHours"
+for (const day of properties) {
+  console.log(day);
+}
+
+// return an array of values in this objects
+const values = Object.values(openingHours);
+
+const entries = Object.entries(openingHours);
+for (const[day, {open, close}] of entries) {
+  console.log(`On ${day}, we open at ${open} and close at ${close}`);
+}
+
+```
 
 ## Sets
 
