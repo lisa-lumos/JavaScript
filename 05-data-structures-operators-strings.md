@@ -472,7 +472,43 @@ for (const[day, {open, close}] of entries) {
 ```
 
 ## Sets
+In the past, JS had very little built-in data structures, there was only objects and arrays. But in ES6, 2 more data structures was introduced - sets and maps. 
 
+Set can hold different data types. 
+
+Sets are iterables. 
+
+```js
+// inside the parenthesis, need to pass an iterable, such as an array
+const orderSet = new Set(['Pasta', 'Pizza', 'Pizza']);
+console.log(orderSet); // {"Pasta", "Pizza"}
+
+// strings are also iterables
+console.log(new Set('lisa'));  // {"l", "i", "s", "a"}
+
+console.log(new Set()); // a set can also be empty
+
+let orderSize = orderSet.size;
+
+console.log(orderSet.has('Pizza')); // true
+
+orderSet.add('Garlic Bread');
+
+for (const order of orderSet) console.log(order);
+
+
+orderSet.delete('Pasta');
+
+orderSet.clear();
+
+// The main user case for a set is to rmv dup vals from arrays. 
+const arrayDups = ['Pasta', 'Pizza', 'Pizza'];
+const mySet = new Set(arrayDups);
+const arrayUnique = [...mySet];
+
+// count the number of unique letters in a string
+console.log(new set('lisalumos').size);
+```
 
 ## Maps: Fundamentals
 
