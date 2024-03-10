@@ -511,7 +511,54 @@ console.log(new set('lisalumos').size);
 ```
 
 ## Maps: Fundamentals
+Introduced in ES6. Key value pairs. Key can be of any type, even objects arrays, or other maps. 
 
+```js
+const restaurant = new Map();
+restaurant.set('name', 'Classico Italiano');
+restaurant.set(1, 'Firenze, Italy');
+restaurant.set(2, 'Lisbon, Portugal');
+
+// The set method also returns the updated map
+console.log(restaurant.set(3, 'place A'))
+
+// This allows chaining of the set methods
+restaurant
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open.')
+  .set(false, 'We are closed.')
+;
+
+// access the value using the key
+console.log(restaurant.get('name'));
+
+const time = 21;
+let message = restaurant.get(time > restaurant.get('open') && time < restaurant.get('close'));
+
+// check if the map has a certain key
+console.log(restaurant.has('categories'));
+
+// delete elem from map, by key
+restaurant.delete(2);
+
+// compared with objects, 
+// you can use the delete operator, but it is slow and not recommended. 
+
+// get the size of the map
+console.log(restaurant.size); 
+
+// rmv all elements from the map
+restaurant.clear();
+
+const arr = [1, 2];
+restaurant.set(arr, 'test');
+console.log(restaurant.get(arr));
+
+rest.set(document.querySelector('h1'), 'Heading');
+
+```
 
 ## Maps: Iteration
 
