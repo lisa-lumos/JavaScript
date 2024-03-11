@@ -562,6 +562,36 @@ rest.set(document.querySelector('h1'), 'Heading');
 
 ## Maps: Iteration
 
+```js
+// another way to initialize a map
+const question = new Map([
+  ['question', 'What is your favorite color? '], // a key value pair
+  [1, 'Red'],
+  [2, 'Green'],
+  ['correct', 2],
+  [true, 'Correct'],
+  [false, 'Try again! '],
+]);
+
+// convert object to map
+const hoursMap = new Map(Object.entries(openingHours)); 
+
+console.log(question.get('question'));
+
+// iterate
+for (const [key, value] of question) {
+  if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = Number(prompt('Your answer')); 
+console.log(question.get(answer === question.get('correct')));
+
+// convert map to array
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+```
 
 ## Summary: Which Data Structure to Use?
 
@@ -571,9 +601,6 @@ rest.set(document.querySelector('h1'), 'Heading');
 ## Working With Strings 
 
 
-
-
-## String Methods Practice
 
 
 
