@@ -594,9 +594,22 @@ console.log([...question.values()]);
 ```
 
 ## Summary: Which Data Structure to Use?
+Common data sources:
+1. From the code itself. Such as data written directly in the source code, like a status message
+2. From the UI. Such as user input, or data from DOM
+3. From external source. Such as data from a web API. 
 
+If the data is a simple list, then use Arrays or Sets. Use sets for de-duplicating an array, and for high-performance. 
 
+If the data is key-val pairs, then use Objects or Maps. 
 
+For example, if an API returns an array of objects, then we can use a JS array to contain this data. 
+
+Maps are better suited for key-val stores than objects, because it has better performance, more flexible (key can have any data type), easier to iterate. Its size is also easier to compute. 
+
+If you need functions as values, then you should use Objects. Because maps doesn't have this. 
+
+For JSON data, it is common to use Objects. 
 
 ## Working With Strings 
 
