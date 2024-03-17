@@ -612,10 +612,30 @@ If you need functions as values, then you should use Objects. Because maps doesn
 For JSON data, it is common to use Objects. 
 
 ## Working With Strings 
+Strings in js are primitives, but whenever a methods is called on a string, js will first convert it to a String object, behind the scene, then call the method against the string object. After the function is called, the result is converted back to the primitive string. 
+
+```js
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // 'A'
+console.log(airline.length); // 16
+console.log(airline.indexOf('r')); // 6 (aka, first index of)
+console.log(airline.lastIndexOf('r')); // 10
+console.log(airline.indexOf('Portugal')); // 8 (case sensitive, if not exist, returns -1)
+
+console.log(airline.slice(4)); // get the substr starts from idx 4, and to the end
+console.log(airline.slice(4, 7)); // at the substr with idx [4, 7)
+console.log(airline.slice(-1)); // 'l' (counting from the end)
+
+// extract the first word off a string
+console.log(airline.slice(0, airline.indexOf(' ')))
 
 
 
 
+
+```
 
 
 
