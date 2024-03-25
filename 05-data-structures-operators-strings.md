@@ -614,6 +614,8 @@ For JSON data, it is common to use Objects.
 ## Working With Strings 
 Strings in js are primitives, but whenever a methods is called on a string, js will first convert it to a String object, behind the scene, then call the method against the string object. After the function is called, the result is converted back to the primitive string. 
 
+You can chain these methods, because the new string is the returned value of the prv function. 
+
 ```js
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
@@ -629,7 +631,28 @@ console.log(airline.slice(4, 7)); // at the substr with idx [4, 7)
 console.log(airline.slice(-1)); // 'l' (counting from the end)
 
 // extract the first word off a string
-console.log(airline.slice(0, airline.indexOf(' ')))
+console.log(airline.slice(0, airline.indexOf(' ')));
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// trim a string
+const s = '   test \n';
+console.log(s.trim()); // 'test'
+
+// replace the first occurrence of a substring
+const price = '$123.45';
+const replaced_price = price.replace('.', ','); // '$123,45'
+
+// to replace all occurrences, use replaceAll()
+// or, use regex
+const s_replaced = s.replace(/door/g, 'gate'); 
+
+// return booleans
+const plane = 'A320neo';
+console.log(plane.includes('A320')); // true
+console.log(plane.startsWith('Air')); // false
+console.log(plane.endsWith('neo')); // true
 
 
 
