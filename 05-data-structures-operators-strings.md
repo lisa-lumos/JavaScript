@@ -654,8 +654,12 @@ console.log(plane.includes('A320')); // true
 console.log(plane.startsWith('Air')); // false
 console.log(plane.endsWith('neo')); // true
 
+// split a string
+console.log('a+very+nice+string'.split('+')); // returns an array of substrs
+const [firstName, lastName] = 'lisa lumos'.split(' ');
 
-
+// join an array of strs
+['lisa', 'lumos'].join(' ');
 
 
 ```
