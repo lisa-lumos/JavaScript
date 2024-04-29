@@ -661,29 +661,13 @@ const [firstName, lastName] = 'lisa lumos'.split(' ');
 // join an array of strs
 ['lisa', 'lumos'].join(' ');
 
+// pad a string. padStart() and padEnd()
+// use case: pad a credit card, so it only shows ***.. and last 4 digits. 
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+')); // pad it in the front, so it ends up 25 char long
+
+// repeat a string
+const message2 = 'Repeat me! ';
+console.log(message2.repeat(3)); // Repeat me! Repeat me! Repeat me! 
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
