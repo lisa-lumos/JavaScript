@@ -1,4 +1,4 @@
-# JavaScript Fundamentals 1
+# 1. JavaScript Fundamentals 1
 
 ## Getting Started
 `VS Code` settings: 

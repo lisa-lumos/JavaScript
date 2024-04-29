@@ -1,4 +1,4 @@
-# JS in the browser - DOM and events
+# 3. JS in the browser - DOM and events
 ## DOM and DOM manipulation
 DOM: Document Object Model. A structured representation of html documents, connects JS with html, allows JS to access/manipulate them. Can change text of elements, change html attributes of elements, change their css styles, etc. 
 
