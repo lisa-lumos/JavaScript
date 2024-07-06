@@ -29,10 +29,14 @@ createBooking('LH123', 2, 800);
 createBooking('LH123', 2);
 createBooking('LH123', 5);
 createBooking('LH123', undefined, 1000); // set the 2nd param as default
-
 ```
-## How Passing Arguments Works: Value vs. Reference
 
+## How Passing Arguments Works: Value vs. Reference
+When passing a primitive type to a function, it passes a copy of the primitive. And when a reference type (such as an object) was passed to a function, the reference got copied. 
+
+`JS doesn't have passing by reference, only passing by value.` Unlike C++, where you ca pass a reference to any value, instead of the value itself - this works even with primitives, so you could pass a reference to the value of 5, then the original value outside of the function could be changed (aka, pass by reference). 
+
+Note that for objects, we do pass in a reference, which is the memory address of the object. However, the reference itself is still a value - it is a value that contains a memory address. So we "pass a reference" to the function, but we do not "pass by reference" - which is an important distinction. 
 
 ## First-Class and Higher-Order Functions
 
