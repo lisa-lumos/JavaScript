@@ -39,7 +39,15 @@ When passing a primitive type to a function, it passes a copy of the primitive. 
 Note that for objects, we do pass in a reference, which is the memory address of the object. However, the reference itself is still a value - it is a value that contains a memory address. So we "pass a reference" to the function, but we do not "pass by reference" - which is an important distinction. 
 
 ## First-Class and Higher-Order Functions
+First class functions: functions are simply values, they are just another type of object. 
 
+We can also pass functions as arguments to other functions, or return functions from functions. 
+
+Many objects in JS have methods, like array methods. So functions can also have methods. 
+
+Higher order functions: a function that receives another function as an argument, or, a function that returns a new function. 
+
+The function that is passed in as an argument is also called a "callback function", because it will be called later by the higher order function. 
 
 ## Functions Accepting Callback Functions
 
