@@ -88,7 +88,23 @@ The advantage of callback function:
 It is why "higher order function", which leaves low level details to the "low level functions". 
 
 ## Functions Returning Functions
+```js
+// Functions Returning Functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
 
+const greeterHey = greet('Hey');
+greeterHey('Lisa'); // Hey Lisa
+greet('Hello')('Lisa'); // Hey Lisa
+
+// rewrite it to an arrow function
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('Hi')('Lisa'); // Hi Lisa
+
+```
 
 ## The call and apply Methods
 
