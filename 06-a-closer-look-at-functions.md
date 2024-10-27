@@ -50,7 +50,42 @@ Higher order functions: a function that receives another function as an argument
 The function that is passed in as an argument is also called a "callback function", because it will be called later by the higher order function. 
 
 ## Functions Accepting Callback Functions
+```js
+const oneWord = function (str) {
+  // A regular expression with the g (global) flag (/ /g) will replace all occurrences of that pattern throughout the string.
+  return str.replace(/ /g, '').toLowerCase();
+};
 
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
+
+// JS uses callbacks all the time
+const high5 = function () {
+  console.log('High Five!');
+};
+document.body.addEventListener('click', high5); // a higher order function
+['Jonas', 'Martha', 'Adam'].forEach(high5); // another higher order function
+
+```
+
+The advantage of callback function: 
+- Makes is easy to split the code into reusable and interconnected parts. 
+- Allows us to create abstraction, so that we can hide some detailed code implementation. 
+
+It is why "higher order function", which leaves low level details to the "low level functions". 
 
 ## Functions Returning Functions
 
