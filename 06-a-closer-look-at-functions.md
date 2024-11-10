@@ -107,7 +107,52 @@ greetArr('Hi')('Lisa'); // Hi Lisa
 ```
 
 ## The call and apply Methods
+```js
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
 
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// Does NOT work, because in a regular function call, "this" is undefined
+// aka, "this" keyword depends on how the function is actually called
+// book(23, 'Sarah Williams');
+
+// Call method (allows for manually setting "this")
+// a function is just an object, and objects have methods
+// so functions have methods too, and call() is one of the methods
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+// Apply method (similar to Call method, but takes an array)
+// not used anymore in modern JS, because you can use spread op and use Call()
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
+
+```
 
 ## The bind Method
 
